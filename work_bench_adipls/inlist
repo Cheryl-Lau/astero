@@ -1,0 +1,29 @@
+
+&star_job
+
+      read_extra_star_job_inlist1 = .true.
+      extra_star_job_inlist1_name = 'inlist_astero' ! evolved model
+      read_extra_star_job_inlist2 = .false.
+      extra_star_job_inlist2_name = 'inlist_pulse' ! original test model
+
+/ ! end of star_job namelist
+
+
+&controls
+
+      read_extra_controls_inlist1 = .true.
+      extra_controls_inlist1_name = 'inlist_astero'
+      read_extra_controls_inlist2 = .false.
+      extra_controls_inlist2_name = 'inlist_pulse'
+
+/ ! end of controls namelist
+
+
+&pgstar
+
+      read_extra_pgstar_inlist1 = .true.
+      extra_pgstar_inlist1_name = 'inlist_astero'
+      read_extra_pgstar_inlist2 = .false.
+      extra_pgstar_inlist2_name = 'inlist_pulse'
+
+/ ! end of pgstar namelist

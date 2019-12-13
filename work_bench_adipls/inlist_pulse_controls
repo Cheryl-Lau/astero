@@ -1,0 +1,44 @@
+&pulse_controls
+
+  freqs_after_every_step = .false.	
+  freqs_after_final_step = .true.
+
+/ ! end of pulse_controls namelist
+
+
+&mode_controls  
+
+    l = 1
+    em = -1
+    nu1 = 3.0  ! microHz
+    nu2 = 40.0  
+    iscan = 300
+    angular_velocity = 0.05
+    in_terms_of_omega_k = .true.  ! otherwise in rad/s, inertial frame
+    compute_first_order_rotation = .false. 
+    compute_second_order_rotation = .true. 
+    special_output = 6
+    save_mode_filename = 'save_M_1.56_O_0.02_H_0.5_R_0.05_mode.data'
+
+/ ! end of mode_controls namelist
+
+
+
+
+
+
+! ******************************************************************
+! Notes on special_output: (copied from adipls.c.d)
+
+c  ispcpr: if ispcpr .ne. 0 special output may be produced by
+c          call of user-supplied routine spcout.
+c  Also used to define type of frequency stored in common/cobs_param/
+c  (see s/r setobs_st for details):
+c  ispcpr = 1: variational frequency.
+c  ispcpr = 4: from eigenfrequency in cs(20).
+c              Note that this allows setting Cowling
+c              approximation frequency.
+c  ispcpr = 5: from Richardson extrapolation frequency
+c              in cs(37), if this is set.
+c              Otherwise variational frequency is used.
+c  ispcpr = 6: from (possibly corrected) eigenfrequency in cs(21).
