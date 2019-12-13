@@ -1,0 +1,140 @@
+&star_job
+     
+      show_log_description_at_start = .false. 
+      
+      ! Using an existing model as a starting point
+      create_pre_main_sequence_model = .true.
+      load_saved_model = .false.
+      saved_model_name = 'model_21.mod' ! ZAMS model from work_gDor3_ZAMS, no overshoot
+
+      save_model_when_terminate = .true.
+      save_model_filename = 'FINAL.mod'
+      
+      ! Using the metallicity of Asplund et al. (2009) and OPAL type I opacity tables
+      kappa_file_prefix = 'a09'
+      kappa_lowT_prefix = 'lowT_fa05_a09p'
+      initial_zfracs = 6
+      
+      ! We have a custom routine to compute the asymptotic period spacing for dipole modes.
+      ! If this parameter is .true., MESA will not run because we have customized run_star_extras.f.
+      warn_run_star_extras =.false.
+      
+      pgstar_flag = .false.
+
+
+/ ! end of star_job namelist
+
+
+
+&controls
+      
+      ! output controls
+     
+      photo_interval = 100 
+      history_interval = 100
+      profile_interval = 50
+      terminal_interval = 5
+      write_profiles_flag = .true. 
+      max_num_profile_models = 500
+      
+      log_directory = 'LOGS'
+      
+      write_pulse_data_with_profile = .true.
+      pulse_data_format = 'GYRE'
+         
+
+      !Initial parameters 
+      initial_mass = 1.00
+      initial_z = 0.02
+      initial_y = 0.28
+
+      
+      ! Controlling the mixing length of the convection zones
+
+      mixing_length_alpha = 1.8
+      conv_dP_term_factor = 0
+      MLT_option = 'Henyey'
+      
+      use_Ledoux_criterion = .true.
+      alpha_semiconvection = 0.01
+      semiconvection_option = 'Langer_85 mixing; gradT = gradr'      
+
+      ! Overshooting
+      overshoot_f_above_burn_h_core = 0.00
+      overshoot_f0_above_burn_h_core = 0.005
+
+      step_overshoot_D = 0.0
+      step_overshoot_D0_coeff = 0.0 !0.8
+
+      ! Defining a minimum diffusive mixing (applicable in the radiative zones)
+      set_min_D_mix = .true.
+      min_D_mix = 1.0
+      remove_small_D_limit = 0
+      
+      ! Overshooting shuts off when the exponential decay has dropped the diffusion coefficient to this level.
+      ! This value has to be lower than min_D_mix.
+      D_mix_ov_limit = 5d-2
+      
+      ! if > 0, N^2 is smoothed, introducing noise in the period spacing patterns: we do not want this!
+      num_cells_for_smooth_brunt_B = 0 
+      
+      
+      ! Time Controls and stellar age controls
+      
+      ! Maximum timestep
+      max_years_for_timestep = 1d7
+      
+      ! Stop criterion at the end of the main sequence
+      xa_central_lower_limit_species(1) = 'h1'
+      xa_central_lower_limit(1) = 0.001
+             
+
+             
+      ! Mesh Controls, to resolve the gravity modes near the convective core boundary
+      
+      max_allowed_nz = 20000
+      
+      ! global mesh resolution factor
+      mesh_delta_coeff = 0.2
+      
+      ! Additional resolution based on the pressure and temperature profiles
+
+      P_function_weight = 30
+      T_function1_weight = 75 
+      
+      ! Additional resolution depending on the chemical abundances and gradients
+
+      xa_function_species(1) = 'he4'                     ! name of nuclide as defined in chem_def
+      xa_function_weight(1) = 80                         
+      xa_function_param(1) = 1d-2                         
+         
+      xa_function_species(2) = 'he3'                     ! name of nuclide as defined in chem_def
+      xa_function_weight(2) = 20                       
+      xa_function_param(2) = 1d-5                      
+      
+      mesh_dlogX_dlogP_extra(:) = 0.15                   ! resol coeff for chemical gradients
+      mesh_dlogX_dlogP_full_on(:) = 1d-6                 ! additional resol on for gradient larger than this
+      mesh_dlogX_dlogP_full_off(:) = 1d-12               ! additional resol off for gradient smaller than this
+      
+      mesh_logX_species(1) = 'he4'                       ! taking into account abundance of He4
+      
+      
+      ! Additional resolution near the boundaries of the convective regions
+      xtra_coef_czb_full_on = 0.0
+      xtra_coef_czb_full_off = 1.0
+      
+      xtra_coef_a_l_nb_czb = 0.015                       ! resol coeff above lower nonburn convective boundary
+      xtra_dist_a_l_nb_czb = 10                          ! distance above lower nonburn convective boundary      
+      xtra_coef_b_l_nb_czb = 0.075                       ! resol coeff below lower nonburn convective boundary
+      xtra_dist_b_l_nb_czb = 3                           ! distance below lower nonburn convective boundary
+      
+      ! Properly constrain the location of the convective boundaries
+      convective_bdy_weight = 1
+      convective_bdy_dq_limit = 1d-6
+      convective_bdy_min_dt_yrs = 1d-3
+      
+
+/ ! end of controls namelist
+
+
+
