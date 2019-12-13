@@ -1,0 +1,65 @@
+&constants
+/
+
+&model
+	model_type = 'EVOL'       ! Obtain stellar structure from an evolutionary model
+        file = './LOGS_M_1.56_O_0.02_H_0.50_R_0.05/profile22.data.GYRE'
+	file_format = 'MESA'      ! File format of the evolutionary model
+        uniform_rot = .true.      ! Apply a uniform rotation rate
+        Omega_rot = 0.05
+	Omega_units = 'CRITICAL'
+/
+
+&osc
+        outer_bound = 'VACUUM'      ! Use a zero-pressure outer mechanical boundary condition; no wave-leaking allowed
+        rotation_method = 'TAR'     ! Method to apply the rotational frequency shift
+/
+
+&mode
+	l = 1                    ! Spherical degree
+        m = 0                    ! Azimuthal order possible to include
+        n_pg_min = -100              ! Minimum radial order n to be computed (if located in the scanned frequency range)
+        n_pg_max = -5         ! Maximum radial order n to be computed (if located in the scanned frequency range)
+/
+
+&num
+	diff_scheme = 'MAGNUS_GL4'
+	r_root_solver = 'BRENT'
+/
+
+&scan
+        grid_type = 'INVERSE'     ! Scan for modes using a uniform-in-period grid; best for g modes
+        grid_frame = 'COROT_I'    ! The computations are done in the corotating frame. 
+                                  ! For differential rotation the rotation frequency at the inner boundary 
+                                  ! is used as reference.
+        freq_min_units = 'UHZ'   
+	freq_max_units = 'UHZ'
+        freq_frame = 'INERTIAL'     ! The frequencies in the output files are taken in the inertial frame 
+        freq_min = 3.8             ! Minimum frequency of the scanned frequency range
+	freq_max = 100.0            ! Maximum frequency of the scanned frequency range
+	n_freq = 500               ! Number of frequency points to be considered in the scanned range
+/
+
+&grid
+
+	n_inner = 12			! At least 12 points in the evanescent region
+	alpha_osc = 5			! At least 5 points per oscillatory wavelength
+	alpha_exp = 2			! At least 1 point per eyponential 'wavelength'
+/
+
+
+&ad_output
+        summary_file = 'profile_puls_summary.txt'
+	summary_file_format = 'TXT'                                                  ! Format of summary file
+        summary_item_list = 'M_star,n_pg,freq,freq_units' ! Items to appear in summary file
+        mode_template = 'profile_mode.%J.txt'
+	mode_file_format = 'TXT'                                                     ! Format of mode files
+        mode_item_list = 'l,n_pg,omega,freq,freq_units,x,x_ref,xi_r,xi_h'   	     ! Items to appear in mode files
+        freq_units = 'UHZ'
+        freq_frame = 'INERTIAL'
+/
+
+&nad_output
+
+/
+

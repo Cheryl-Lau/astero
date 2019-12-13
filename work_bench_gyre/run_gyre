@@ -1,0 +1,229 @@
+#!/bin/ksh
+
+
+# Compile
+./clean
+./mk
+
+WORK_DIR=work_gyre_14    #### CHANGE DIRECTORY!!!!
+
+
+### Return all inputs into original default settings before beginning parameter scan
+
+# for inlist_astero
+sed -i "s/.*log_directory = .*/      log_directory = 'LOGS'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+sed -i 's/.*initial_mass = .*/      initial_mass = 1.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+sed -i 's/.*overshoot_f_above_burn_h_core = .*/      overshoot_f_above_burn_h_core = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+sed -i 's/.*xa_central_lower_limit(1) = .*/      xa_central_lower_limit(1) = 0.001/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+# for gyre.in
+sed -i "s|.*LOGS.*|        file = './LOGS/'|g" $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+sed -i 's/.*Omega_rot = .*/        Omega_rot = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+
+
+### Vary the 4D parameters 
+
+MASS_MIN=1.4    
+MASS_MAX=2.0
+MASS_STEP=0.05
+MASS=$((MASS_MIN-MASS_STEP))   # initialize
+
+while [ $MASS -ge $((MASS_MIN-MASS_STEP)) ] && [ $MASS -le $((MASS_MAX-MASS_STEP)) ] ; do
+   MASS=$((MASS+MASS_STEP))
+
+   OVERSHOOT_MIN=0.01
+   OVERSHOOT_MAX=0.03
+   OVERSHOOT_STEP=0.01
+   OVERSHOOT=$((OVERSHOOT_MIN-OVERSHOOT_STEP))
+
+   while [ $OVERSHOOT -ge $((OVERSHOOT_MIN-OVERSHOOT_STEP)) ] && [ $OVERSHOOT -le $((OVERSHOOT_MAX-OVERSHOOT_STEP)) ] ; do 
+      OVERSHOOT=$((OVERSHOOT+OVERSHOOT_STEP))
+
+      H_LIMIT_MIN=0.48
+      H_LIMIT_MAX=0.52
+      H_LIMIT_STEP=0.01
+      H_LIMIT=$((H_LIMIT_MIN-H_LIMIT_STEP))
+
+      while [ $H_LIMIT -ge $((H_LIMIT_MIN-H_LIMIT_STEP)) ] && [ $H_LIMIT -le $((H_LIMIT_MAX-H_LIMIT_STEP)) ] ; do
+         H_LIMIT=$((H_LIMIT+H_LIMIT_STEP))
+
+         OMEGA_ROT_MIN=0.00
+         OMEGA_ROT_MAX=0.14
+         OMEGA_ROT_STEP=0.02
+         OMEGA_ROT=$((OMEGA_ROT_MIN-OMEGA_ROT_STEP))
+
+         while [ $OMEGA_ROT -ge $((OMEGA_ROT_MIN-OMEGA_ROT_STEP)) ] && [ $OMEGA_ROT -le $((OMEGA_ROT_MAX-OMEGA_ROT_STEP)) ] ; do
+            OMEGA_ROT=$((OMEGA_ROT+OMEGA_ROT_STEP))
+
+
+            # Output files naming
+            LOG_DIR="LOGS_M_${MASS}_O_${OVERSHOOT}_H_${H_LIMIT}_R_${OMEGA_ROT}"
+            GYRE_OUTPUT="gyre_output_M_${MASS}_O_${OVERSHOOT}_H_${H_LIMIT}_R_${OMEGA_ROT}"
+
+
+            # Checking parameter values 
+	    echo 'new_mass =' $MASS
+	    echo 'new_overshoot =' $OVERSHOOT
+	    echo 'new_h_limit =' $H_LIMIT
+	    echo 'new_omega_rot =' $OMEGA_ROT
+            echo 'new_log_directory =' $LOG_DIR
+            echo 'new_gyre_output =' $GYRE_OUTPUT
+
+
+           ############################################# Enter core codes here ###################################################
+
+            # Clear files from previous run
+            if [ -f FINAL.mod ]; then
+	       rm -r FINAL.mod
+            fi
+
+
+	    ### Vary parameter values in mesa:
+
+
+	    # LOG directory for storing mesa outputs
+            echo log_directory = $LOG_DIR
+	    sed -i "s/log_directory = 'LOGS'/log_directory = '$LOG_DIR'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+	    # Initial mass 
+	    echo Initial_mass = $MASS
+	    sed -i 's/initial_mass = 1.00/initial_mass = '$MASS'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+	    # Core Overshooting; f0= 0.05
+	    echo Overshooting = $OVERSHOOT 
+	    sed -i 's/overshoot_f_above_burn_h_core = 0.00/overshoot_f_above_burn_h_core = '$OVERSHOOT'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+	    # Age (Stopping condition) 
+	    echo Core_hydrogen_lower_limit = $H_LIMIT
+	    sed -i 's/xa_central_lower_limit(1) = 0.001/xa_central_lower_limit(1) = '$H_LIMIT'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+
+	    ./rn
+
+
+	    # Continue when mesa finished running
+	    if [ -f FINAL.mod ]
+	    then
+
+
+	    ### Vary parameter values in gyre: 
+
+
+	       # Find final model gyre file in LOGS
+               cd ./$LOG_DIR
+	       mv profiles.index index.profiles  #so it's not at the end
+	       FINAL_MODEL=$(ls | sort -V | tail -n 1)   # final gyre file
+	       echo Input_model = $FINAL_MODEL
+	       cd ..
+
+	       # Input Model file
+	       sed -i 's|./LOGS/|./'$LOG_DIR'/'$FINAL_MODEL'|g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+
+
+	       # Rotation rate
+	       echo Omega_rot = $OMEGA_ROT
+	       sed -i 's/Omega_rot = 0.00/Omega_rot = '$OMEGA_ROT'/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+
+	       # Mode
+	       #   sed -i 's/l = 0/l = '$L'/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in   # testing
+	       #   sed -i 's/m = 0/m = '$M'/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+
+
+
+	       $GYRE_DIR/bin/gyre ./gyre.in
+
+
+
+	       # Outputs processing
+	       rm -r $GYRE_OUTPUT
+	       mkdir $GYRE_OUTPUT    # will run this after gyre is finish running
+	       rm -r profile_mode.*
+	       mv profile_puls_summary.txt ./$GYRE_OUTPUT
+
+
+	       # Clear settings at the end of each run
+
+	       if [ -s $GYRE_OUTPUT ]
+	       then
+                  echo Returning settings back to default
+
+	          # remove the LOG file from this run (free memory)
+		  rm -r $LOG_DIR 
+
+	          # return inlist_astero settings back to original (clear all inputs)
+#	          sed -i 's|log_directory = '$LOG_DIR'|log_directory = 'LOGS'|g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+                  sed -i "s/log_directory = '$LOG_DIR'/log_directory = 'LOGS'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+	          sed -i 's/initial_mass = '$MASS'/initial_mass = 1.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+	          sed -i 's/overshoot_f_above_burn_h_core = '$OVERSHOOT'/overshoot_f_above_burn_h_core = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+	          sed -i 's/xa_central_lower_limit(1) = '$H_LIMIT'/xa_central_lower_limit(1) = 0.001/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+	          # return gyre.in settings back to original (clear all inputs)
+	          sed -i 's|./'$LOG_DIR'/'$FINAL_MODEL'|./LOGS/|g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+	          sed -i 's/Omega_rot = '$OMEGA_ROT'/Omega_rot = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+#     	          sed -i 's/l = '$L'/l = 0/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+#      		  sed -i 's/m = '$M'/m = 0/g' $MESA_DIR/star/astero/$WORK_DIR/gyre.in
+
+	       fi
+
+            fi
+
+
+            echo COMPUTATION FOR ONE MODEL COMPLETED
+
+
+        ####################################################### End of core codes #######################################################
+
+
+         done  # OMEGA_ROT loop
+         echo OMEGA_ROT loop completed
+         OMEGA_ROT=-1   # Reset once the sub-loop is completed 
+
+      done  # H_LIMIT loop
+      echo H_LIMIT loop completed
+      H_LIMIT=-1
+
+   done  # OVERSHOOT loop
+   echo OVERSHOOT loop completed
+   OVERSHOOT=-1
+
+done  # MASS loop
+echo MASS loop completed
+MASS=-1
+
+
+echo whole loop net completed 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
