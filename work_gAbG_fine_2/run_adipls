@@ -1,0 +1,185 @@
+#!/bin/ksh
+
+
+# Compile 
+./clean
+./mk
+
+WORK_DIR=work_gAbG_fine_2   ### CHANGE DIRECTORY !!!!!!
+
+
+### Return all inputs into original default settings before beginning parameter scan
+
+# for inlist_astero
+sed -i "s/.*log_directory = .*/      log_directory = 'LOGS'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+sed -i 's/.*initial_mass = .*/      initial_mass = 1.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+sed -i 's/.*overshoot_f_above_burn_h_core = .*/      overshoot_f_above_burn_h_core = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+sed -i 's/.*xa_central_lower_limit(1) = .*/      xa_central_lower_limit(1) = 0.001/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+# for inlist_pulse_controls
+sed -i 's/.*angular_velocity = .*/    angular_velocity = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_pulse_controls
+sed -i "s/.*save_mode_filename = .*/    save_mode_filename = 'save_mode.data'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_pulse_controls
+
+
+### Vary the 4D parameters 
+
+MASS_MIN=1.58
+MASS_MAX=1.586 
+MASS_STEP=0.002
+MASS=$((MASS_MIN-MASS_STEP))   # initialize
+
+while [ $MASS -ge $((MASS_MIN-MASS_STEP)) ] && [ $MASS -le $((MASS_MAX-MASS_STEP)) ] ; do 
+   MASS=$((MASS+MASS_STEP))
+
+   OVERSHOOT_MIN=0.01
+   OVERSHOOT_MAX=0.014
+   OVERSHOOT_STEP=0.002
+   OVERSHOOT=$((OVERSHOOT_MIN-OVERSHOOT_STEP))
+
+   while [ $OVERSHOOT -ge $((OVERSHOOT_MIN-OVERSHOOT_STEP)) ] && [ $OVERSHOOT -le $((OVERSHOOT_MAX-OVERSHOOT_STEP)) ] ; do
+      OVERSHOOT=$((OVERSHOOT+OVERSHOOT_STEP))
+
+      H_LIMIT_MIN=0.51
+      H_LIMIT_MAX=0.52
+      H_LIMIT_STEP=0.005
+      H_LIMIT=$((H_LIMIT_MIN-H_LIMIT_STEP))
+
+      while [ $H_LIMIT -ge $((H_LIMIT_MIN-H_LIMIT_STEP)) ] && [ $H_LIMIT -le $((H_LIMIT_MAX-H_LIMIT_STEP)) ] ; do
+         H_LIMIT=$((H_LIMIT+H_LIMIT_STEP))
+
+         OMEGA_ROT_MIN=0.02
+         OMEGA_ROT_MAX=0.03
+         OMEGA_ROT_STEP=0.002
+         OMEGA_ROT=$((OMEGA_ROT_MIN-OMEGA_ROT_STEP))
+
+         while [ $OMEGA_ROT -ge $((OMEGA_ROT_MIN-OMEGA_ROT_STEP)) ] && [ $OMEGA_ROT -le $((OMEGA_ROT_MAX-OMEGA_ROT_STEP)) ] ; do
+            OMEGA_ROT=$((OMEGA_ROT+OMEGA_ROT_STEP))
+
+
+            # Output files naming
+            LOG_DIR="LOGS_M_${MASS}_O_${OVERSHOOT}_H_${H_LIMIT}_R_${OMEGA_ROT}"
+            ADIPLS_OUTPUT="save_M_${MASS}_O_${OVERSHOOT}_H_${H_LIMIT}_R_${OMEGA_ROT}_mode.data"
+
+
+            # Checking parameter values 
+            echo 'new_mass =' $MASS
+            echo 'new_overshoot =' $OVERSHOOT
+            echo 'new_h_limit =' $H_LIMIT
+            echo 'new_omega_rot =' $OMEGA_ROT
+            echo 'new_log_directory =' $LOG_DIR
+            echo 'new_adipls_output =' $ADIPLS_OUTPUT
+
+
+           ############################################# Enter core codes here ###################################################
+
+            # Clear files from previous run
+            if [ -f FINAL.mod ]; then
+               rm -r FINAL.mod
+            fi
+
+
+            ### Vary parameter values in mesa inlist_astero:
+
+
+            # LOG directory for storing mesa outputs
+            echo log_directory = $LOG_DIR
+            sed -i "s/log_directory = 'LOGS'/log_directory = '$LOG_DIR'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+            # Initial mass 
+            echo Initial_mass = $MASS
+            sed -i 's/initial_mass = 1.00/initial_mass = '$MASS'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+            # Core Overshooting; f0= 0.05
+            echo Overshooting = $OVERSHOOT 
+            sed -i 's/overshoot_f_above_burn_h_core = 0.00/overshoot_f_above_burn_h_core = '$OVERSHOOT'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+            # Age (Stopping condition) 
+            echo Core_hydrogen_lower_limit = $H_LIMIT
+            sed -i 's/xa_central_lower_limit(1) = 0.001/xa_central_lower_limit(1) = '$H_LIMIT'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+
+            ### Vary parameter values in mesa inlist_pulse_controls:
+
+          
+            # Rotation rate
+	    echo Angular_velocity = $OMEGA_ROT
+	    sed -i 's/angular_velocity = 0.00/angular_velocity = '$OMEGA_ROT'/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_pulse_controls
+
+	    # Save mode filename 
+	    echo save_mode_filename = $ADIPLS_OUTPUT
+            sed -i "s/save_mode_filename = 'save_mode.data'/save_mode_filename = '$ADIPLS_OUTPUT'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_pulse_controls
+
+
+	    ./rn
+
+
+	    # Clear settings at end of each run
+
+	    if [ -f $ADIPLS_OUTPUT ]; then 
+	       echo Returning settings back to default
+
+	       rm -r $LOG_DIR 
+
+	    # return inlist_astero settings back to original (clear all inputs)
+               sed -i "s/log_directory = '$LOG_DIR'/log_directory = 'LOGS'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+               sed -i 's/initial_mass = '$MASS'/initial_mass = 1.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+               sed -i 's/overshoot_f_above_burn_h_core = '$OVERSHOOT'/overshoot_f_above_burn_h_core = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+               sed -i 's/xa_central_lower_limit(1) = '$H_LIMIT'/xa_central_lower_limit(1) = 0.001/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_astero
+
+	    # return inlist_pulse_controls settings back to original (clear all inputs)
+	       sed -i 's/angular_velocity = '$OMEGA_ROT'/angular_velocity = 0.00/g' $MESA_DIR/star/astero/$WORK_DIR/inlist_pulse_controls
+	       sed -i "s/save_mode_filename = '$ADIPLS_OUTPUT'/save_mode_filename = 'save_mode.data'/g" $MESA_DIR/star/astero/$WORK_DIR/inlist_pulse_controls
+
+            fi
+
+            echo COMPUTATION FOR ONE MODEL COMPLETED
+
+      
+        ####################################################### End of core codes ########################################################
+
+
+         done  # OMEGA_ROT loop
+         echo OMEGA_ROT loop completed
+         OMEGA_ROT=-1   # Reset once the sub-loop is completed 
+
+      done  # H_LIMIT loop
+      echo H_LIMIT loop completed
+      H_LIMIT=-1
+
+   done  # OVERSHOOT loop
+   echo OVERSHOOT loop completed
+   OVERSHOOT=-1
+
+done  # MASS loop
+echo MASS loop completed
+MASS=-1
+
+
+echo whole loop net completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

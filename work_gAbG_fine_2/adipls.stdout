@@ -1,0 +1,634 @@
+
+
+ --------------------------------------------------
+ Entering adipls with parameter passing
+ i_paramset = 1
+
+
+ Opening standard print on unit  9 file ttt.adipls.prt                          
+
+
+ ----------------------------------------------
+
+
+  cntrd
+ mod.osc.rot.cst.int.out                               @
+  ifind,xmod,imlds,in,nprmod
+          -1   0.0000000000000000                2           1           0     @
+  xtrnct,ntrnsf,imdmod
+   0.0000000000000000                0           1     @
+  el,nsel,els1,dels,dfsig1,dfsig2,nsig1,nsig2
+   1.0000000000000000                0   1.0000000000000000        1.0000000000000000        0.0000000000000000        0.0000000000000000                1           1     @
+  itrsig,sig1,istsig,inomd1,itrds
+           1   2.9607089394686043E-003           1           1          10     @
+  dfsig,nsig,iscan,sig2
+   0.0000000000000000                3         300  0.52634825590552947          @
+  eltrw1, eltrw2, sgtrw1, sgtrw2
+   0.0000000000000000       -1.0000000000000000        0.0000000000000000       -1.0000000000000000          @
+  irotsl, iem, nsem, ems1, idems, omega0
+           1          -1          -1   0.0000000000000000                1   1.0392607375717619E-005     @
+  cgrav
+   6.6742800000000007E-008     @
+  iplneq,iturpr,icow,alb
+           0           0           0   1.0000000000000000          @
+  istsbc,fctsbc,ibotbc,fcttbc
+           1   0.0000000000000000                0   0.0000000000000000          @
+  mdintg,iriche,xfit,fcnorm,eps,epssol,itmax,dsigre
+           5           0  0.98999999999999999       0.50000000000000000        2.0000000000000001E-013   1.0000000000000001E-005           8   0.0000000000000000          @
+  fsig,dsigmx,irsevn,xmnevn,nftmax,itsord
+   1.0000000000000000E-003  0.10000000000000001                2   0.0000000000000000                3          -1     @
+  istdpr,nout,nprcen,irsord,iekinr
+           9          10           0          20           0     @
+  iper,ivarf,kvarf,npvarf,nfmode
+           0           2           2           0           0     @
+  irotkr,nprtkr,igm1kr,npgmkr,ispcpr
+          21          70           0          50           6     @
+ icaswn, sigwn1, sigwn2, frqwn1, frqwn2, iorwn1, iorwn2, frlwn1, frlwn2
+          -1   0.0000000000000000       -1.0000000000000000        0.0000000000000000       -1.0000000000000000            -5000         100   0.0000000000000000       -1.0000000000000000          @
+
+ Finish setting model with M =   1.58616 Msun, R =  1.20613E+11 cm
+
+
+ Entering set_rotation
+
+ Exiting set_rotation
+
+    1. Start iteration for l =     1.000 m =        -1 trial sigma**2 =  2.9607E-03
+ Iteration converged after   4 steps.    sigma**2 =  2.9795E-03
+ mode order =-101
+ Iteration converged after   4 steps.    sigma**2 =  3.0395E-03
+ mode order =-100
+ Iteration converged after   4 steps.    sigma**2 =  3.1013E-03
+ mode order = -99
+ Iteration converged after   4 steps.    sigma**2 =  3.1650E-03
+ mode order = -98
+ Iteration converged after   4 steps.    sigma**2 =  3.2307E-03
+ mode order = -97
+ Iteration converged after   4 steps.    sigma**2 =  3.2983E-03
+ mode order = -96
+ Iteration converged after   4 steps.    sigma**2 =  3.3681E-03
+ mode order = -95
+ Iteration converged after   4 steps.    sigma**2 =  3.4400E-03
+ mode order = -94
+ Iteration converged after   4 steps.    sigma**2 =  3.5141E-03
+ mode order = -93
+ Iteration converged after   4 steps.    sigma**2 =  3.5907E-03
+ mode order = -92
+ Iteration converged after   4 steps.    sigma**2 =  3.6698E-03
+ mode order = -91
+ Iteration converged after   4 steps.    sigma**2 =  3.7516E-03
+ mode order = -90
+ Iteration converged after   4 steps.    sigma**2 =  3.8363E-03
+ mode order = -89
+ Iteration converged after   4 steps.    sigma**2 =  3.9239E-03
+ mode order = -88
+ Iteration converged after   4 steps.    sigma**2 =  4.0145E-03
+ mode order = -87
+ Iteration converged after   4 steps.    sigma**2 =  4.1082E-03
+ mode order = -86
+ Iteration converged after   4 steps.    sigma**2 =  4.2050E-03
+ mode order = -85
+ Iteration converged after   4 steps.    sigma**2 =  4.3050E-03
+ mode order = -84
+ Iteration converged after   4 steps.    sigma**2 =  4.4083E-03
+ mode order = -83
+ Iteration converged after   4 steps.    sigma**2 =  4.5149E-03
+ mode order = -82
+ Iteration converged after   4 steps.    sigma**2 =  4.6251E-03
+ mode order = -81
+ Iteration converged after   4 steps.    sigma**2 =  4.7391E-03
+ mode order = -80
+ Iteration converged after   4 steps.    sigma**2 =  4.8574E-03
+ mode order = -79
+ Iteration converged after   4 steps.    sigma**2 =  4.9802E-03
+ mode order = -78
+ Iteration converged after   4 steps.    sigma**2 =  5.1080E-03
+ mode order = -77
+ Iteration converged after   4 steps.    sigma**2 =  5.2411E-03
+ mode order = -76
+ Iteration converged after   4 steps.    sigma**2 =  5.3798E-03
+ mode order = -75
+ Iteration converged after   4 steps.    sigma**2 =  5.5242E-03
+ mode order = -74
+ Iteration converged after   4 steps.    sigma**2 =  5.6747E-03
+ mode order = -73
+ Iteration converged after   4 steps.    sigma**2 =  5.8312E-03
+ mode order = -72
+ Iteration converged after   4 steps.    sigma**2 =  5.9941E-03
+ mode order = -71
+ Iteration converged after   4 steps.    sigma**2 =  6.1636E-03
+ mode order = -70
+ Iteration converged after   4 steps.    sigma**2 =  6.3401E-03
+ mode order = -69
+ Iteration converged after   4 steps.    sigma**2 =  6.5239E-03
+ mode order = -68
+ Iteration converged after   4 steps.    sigma**2 =  6.7157E-03
+ mode order = -67
+ Iteration converged after   4 steps.    sigma**2 =  6.9164E-03
+ mode order = -66
+ Iteration converged after   4 steps.    sigma**2 =  7.1268E-03
+ mode order = -65
+ Iteration converged after   4 steps.    sigma**2 =  7.3479E-03
+ mode order = -64
+ Iteration converged after   4 steps.    sigma**2 =  7.5804E-03
+ mode order = -63
+ Iteration converged after   4 steps.    sigma**2 =  7.8251E-03
+ mode order = -62
+ Iteration converged after   4 steps.    sigma**2 =  8.0827E-03
+ mode order = -61
+ Iteration converged after   4 steps.    sigma**2 =  8.3536E-03
+ mode order = -60
+ Iteration converged after   4 steps.    sigma**2 =  8.6382E-03
+ mode order = -59
+ Iteration converged after   4 steps.    sigma**2 =  8.9366E-03
+ mode order = -58
+ Iteration converged after   4 steps.    sigma**2 =  9.2489E-03
+ mode order = -57
+ Iteration converged after   4 steps.    sigma**2 =  9.5751E-03
+ mode order = -56
+ Iteration converged after   4 steps.    sigma**2 =  9.9157E-03
+ mode order = -55
+ Iteration converged after   4 steps.    sigma**2 =  1.0272E-02
+ mode order = -54
+ Iteration converged after   4 steps.    sigma**2 =  1.0647E-02
+ mode order = -53
+ Iteration converged after   4 steps.    sigma**2 =  1.1045E-02
+ mode order = -52
+ Iteration converged after   4 steps.    sigma**2 =  1.1469E-02
+ mode order = -51
+ Iteration converged after   4 steps.    sigma**2 =  1.1922E-02
+ mode order = -50
+ Iteration converged after   4 steps.    sigma**2 =  1.2405E-02
+ mode order = -49
+ Iteration converged after   4 steps.    sigma**2 =  1.2918E-02
+ mode order = -48
+ Iteration converged after   4 steps.    sigma**2 =  1.3462E-02
+ mode order = -47
+ Iteration converged after   4 steps.    sigma**2 =  1.4036E-02
+ mode order = -46
+ Iteration converged after   4 steps.    sigma**2 =  1.4640E-02
+ mode order = -45
+ Iteration converged after   4 steps.    sigma**2 =  1.5275E-02
+ mode order = -44
+ Iteration converged after   4 steps.    sigma**2 =  1.5949E-02
+ mode order = -43
+ Iteration converged after   4 steps.    sigma**2 =  1.6673E-02
+ mode order = -42
+ Iteration converged after   4 steps.    sigma**2 =  1.7459E-02
+ mode order = -41
+ Iteration converged after   4 steps.    sigma**2 =  1.8316E-02
+ mode order = -40
+ Iteration converged after   4 steps.    sigma**2 =  1.9247E-02
+ mode order = -39
+ Iteration converged after   4 steps.    sigma**2 =  2.0257E-02
+ mode order = -38
+ Iteration converged after   4 steps.    sigma**2 =  2.1349E-02
+ mode order = -37
+ Iteration converged after   4 steps.    sigma**2 =  2.2525E-02
+ mode order = -36
+ Iteration converged after   4 steps.    sigma**2 =  2.3784E-02
+ mode order = -35
+ Iteration converged after   4 steps.    sigma**2 =  2.5122E-02
+ mode order = -34
+ Iteration converged after   4 steps.    sigma**2 =  2.6539E-02
+ mode order = -33
+ Iteration converged after   4 steps.    sigma**2 =  2.8054E-02
+ mode order = -32
+ Iteration converged after   4 steps.    sigma**2 =  2.9717E-02
+ mode order = -31
+ Iteration converged after   4 steps.    sigma**2 =  3.1581E-02
+ mode order = -30
+ Iteration converged after   4 steps.    sigma**2 =  3.3682E-02
+ mode order = -29
+ Iteration converged after   4 steps.    sigma**2 =  3.6050E-02
+ mode order = -28
+ Iteration converged after   4 steps.    sigma**2 =  3.8712E-02
+ mode order = -27
+ Iteration converged after   4 steps.    sigma**2 =  4.1702E-02
+ mode order = -26
+ Iteration converged after   4 steps.    sigma**2 =  4.5057E-02
+ mode order = -25
+ Iteration converged after   4 steps.    sigma**2 =  4.8820E-02
+ mode order = -24
+ Iteration converged after   4 steps.    sigma**2 =  5.3039E-02
+ mode order = -23
+ Iteration converged after   4 steps.    sigma**2 =  5.7748E-02
+ mode order = -22
+ Iteration converged after   4 steps.    sigma**2 =  6.2971E-02
+ mode order = -21
+ Iteration converged after   4 steps.    sigma**2 =  6.8744E-02
+ mode order = -20
+ Iteration converged after   4 steps.    sigma**2 =  7.5230E-02
+ mode order = -19
+ Iteration converged after   4 steps.    sigma**2 =  8.2775E-02
+ mode order = -18
+ Iteration converged after   4 steps.    sigma**2 =  9.1805E-02
+ mode order = -17
+ Iteration converged after   4 steps.    sigma**2 =  1.0274E-01
+ mode order = -16
+ Iteration converged after   5 steps.    sigma**2 =  1.1606E-01
+ mode order = -15
+ Iteration converged after   4 steps.    sigma**2 =  1.3238E-01
+ mode order = -14
+ Iteration converged after   4 steps.    sigma**2 =  1.5259E-01
+ mode order = -13
+ Iteration converged after   4 steps.    sigma**2 =  1.7797E-01
+ mode order = -12
+ Iteration converged after   4 steps.    sigma**2 =  2.1041E-01
+ mode order = -11
+ Iteration converged after   4 steps.    sigma**2 =  2.5285E-01
+ mode order = -10
+ Iteration converged after   4 steps.    sigma**2 =  3.1016E-01
+ mode order =  -9
+ Iteration converged after   4 steps.    sigma**2 =  3.9065E-01
+ mode order =  -8
+ Iteration converged after   4 steps.    sigma**2 =  5.0827E-01
+ mode order =  -7
+
+    1. Start iteration for l =     1.000 m =         0 trial sigma**2 =  2.9607E-03
+ Iteration converged after   4 steps.    sigma**2 =  2.9795E-03
+ mode order =-101
+ Iteration converged after   4 steps.    sigma**2 =  3.0395E-03
+ mode order =-100
+ Iteration converged after   4 steps.    sigma**2 =  3.1013E-03
+ mode order = -99
+ Iteration converged after   4 steps.    sigma**2 =  3.1650E-03
+ mode order = -98
+ Iteration converged after   4 steps.    sigma**2 =  3.2307E-03
+ mode order = -97
+ Iteration converged after   4 steps.    sigma**2 =  3.2983E-03
+ mode order = -96
+ Iteration converged after   4 steps.    sigma**2 =  3.3681E-03
+ mode order = -95
+ Iteration converged after   4 steps.    sigma**2 =  3.4400E-03
+ mode order = -94
+ Iteration converged after   4 steps.    sigma**2 =  3.5141E-03
+ mode order = -93
+ Iteration converged after   4 steps.    sigma**2 =  3.5907E-03
+ mode order = -92
+ Iteration converged after   4 steps.    sigma**2 =  3.6698E-03
+ mode order = -91
+ Iteration converged after   4 steps.    sigma**2 =  3.7516E-03
+ mode order = -90
+ Iteration converged after   4 steps.    sigma**2 =  3.8363E-03
+ mode order = -89
+ Iteration converged after   4 steps.    sigma**2 =  3.9239E-03
+ mode order = -88
+ Iteration converged after   4 steps.    sigma**2 =  4.0145E-03
+ mode order = -87
+ Iteration converged after   4 steps.    sigma**2 =  4.1082E-03
+ mode order = -86
+ Iteration converged after   4 steps.    sigma**2 =  4.2050E-03
+ mode order = -85
+ Iteration converged after   4 steps.    sigma**2 =  4.3050E-03
+ mode order = -84
+ Iteration converged after   4 steps.    sigma**2 =  4.4083E-03
+ mode order = -83
+ Iteration converged after   4 steps.    sigma**2 =  4.5149E-03
+ mode order = -82
+ Iteration converged after   4 steps.    sigma**2 =  4.6251E-03
+ mode order = -81
+ Iteration converged after   4 steps.    sigma**2 =  4.7391E-03
+ mode order = -80
+ Iteration converged after   4 steps.    sigma**2 =  4.8574E-03
+ mode order = -79
+ Iteration converged after   4 steps.    sigma**2 =  4.9802E-03
+ mode order = -78
+ Iteration converged after   4 steps.    sigma**2 =  5.1080E-03
+ mode order = -77
+ Iteration converged after   4 steps.    sigma**2 =  5.2411E-03
+ mode order = -76
+ Iteration converged after   4 steps.    sigma**2 =  5.3798E-03
+ mode order = -75
+ Iteration converged after   4 steps.    sigma**2 =  5.5242E-03
+ mode order = -74
+ Iteration converged after   4 steps.    sigma**2 =  5.6747E-03
+ mode order = -73
+ Iteration converged after   4 steps.    sigma**2 =  5.8312E-03
+ mode order = -72
+ Iteration converged after   4 steps.    sigma**2 =  5.9941E-03
+ mode order = -71
+ Iteration converged after   4 steps.    sigma**2 =  6.1636E-03
+ mode order = -70
+ Iteration converged after   4 steps.    sigma**2 =  6.3401E-03
+ mode order = -69
+ Iteration converged after   4 steps.    sigma**2 =  6.5239E-03
+ mode order = -68
+ Iteration converged after   4 steps.    sigma**2 =  6.7157E-03
+ mode order = -67
+ Iteration converged after   4 steps.    sigma**2 =  6.9164E-03
+ mode order = -66
+ Iteration converged after   4 steps.    sigma**2 =  7.1268E-03
+ mode order = -65
+ Iteration converged after   4 steps.    sigma**2 =  7.3479E-03
+ mode order = -64
+ Iteration converged after   4 steps.    sigma**2 =  7.5804E-03
+ mode order = -63
+ Iteration converged after   4 steps.    sigma**2 =  7.8251E-03
+ mode order = -62
+ Iteration converged after   4 steps.    sigma**2 =  8.0827E-03
+ mode order = -61
+ Iteration converged after   4 steps.    sigma**2 =  8.3536E-03
+ mode order = -60
+ Iteration converged after   4 steps.    sigma**2 =  8.6382E-03
+ mode order = -59
+ Iteration converged after   4 steps.    sigma**2 =  8.9366E-03
+ mode order = -58
+ Iteration converged after   4 steps.    sigma**2 =  9.2489E-03
+ mode order = -57
+ Iteration converged after   4 steps.    sigma**2 =  9.5751E-03
+ mode order = -56
+ Iteration converged after   4 steps.    sigma**2 =  9.9157E-03
+ mode order = -55
+ Iteration converged after   4 steps.    sigma**2 =  1.0272E-02
+ mode order = -54
+ Iteration converged after   4 steps.    sigma**2 =  1.0647E-02
+ mode order = -53
+ Iteration converged after   4 steps.    sigma**2 =  1.1045E-02
+ mode order = -52
+ Iteration converged after   4 steps.    sigma**2 =  1.1469E-02
+ mode order = -51
+ Iteration converged after   4 steps.    sigma**2 =  1.1922E-02
+ mode order = -50
+ Iteration converged after   4 steps.    sigma**2 =  1.2405E-02
+ mode order = -49
+ Iteration converged after   4 steps.    sigma**2 =  1.2918E-02
+ mode order = -48
+ Iteration converged after   4 steps.    sigma**2 =  1.3462E-02
+ mode order = -47
+ Iteration converged after   4 steps.    sigma**2 =  1.4036E-02
+ mode order = -46
+ Iteration converged after   4 steps.    sigma**2 =  1.4640E-02
+ mode order = -45
+ Iteration converged after   4 steps.    sigma**2 =  1.5275E-02
+ mode order = -44
+ Iteration converged after   4 steps.    sigma**2 =  1.5949E-02
+ mode order = -43
+ Iteration converged after   4 steps.    sigma**2 =  1.6673E-02
+ mode order = -42
+ Iteration converged after   4 steps.    sigma**2 =  1.7459E-02
+ mode order = -41
+ Iteration converged after   4 steps.    sigma**2 =  1.8316E-02
+ mode order = -40
+ Iteration converged after   4 steps.    sigma**2 =  1.9247E-02
+ mode order = -39
+ Iteration converged after   4 steps.    sigma**2 =  2.0257E-02
+ mode order = -38
+ Iteration converged after   4 steps.    sigma**2 =  2.1349E-02
+ mode order = -37
+ Iteration converged after   4 steps.    sigma**2 =  2.2525E-02
+ mode order = -36
+ Iteration converged after   4 steps.    sigma**2 =  2.3784E-02
+ mode order = -35
+ Iteration converged after   4 steps.    sigma**2 =  2.5122E-02
+ mode order = -34
+ Iteration converged after   4 steps.    sigma**2 =  2.6539E-02
+ mode order = -33
+ Iteration converged after   4 steps.    sigma**2 =  2.8054E-02
+ mode order = -32
+ Iteration converged after   4 steps.    sigma**2 =  2.9717E-02
+ mode order = -31
+ Iteration converged after   4 steps.    sigma**2 =  3.1581E-02
+ mode order = -30
+ Iteration converged after   4 steps.    sigma**2 =  3.3682E-02
+ mode order = -29
+ Iteration converged after   4 steps.    sigma**2 =  3.6050E-02
+ mode order = -28
+ Iteration converged after   4 steps.    sigma**2 =  3.8712E-02
+ mode order = -27
+ Iteration converged after   4 steps.    sigma**2 =  4.1702E-02
+ mode order = -26
+ Iteration converged after   4 steps.    sigma**2 =  4.5057E-02
+ mode order = -25
+ Iteration converged after   4 steps.    sigma**2 =  4.8820E-02
+ mode order = -24
+ Iteration converged after   4 steps.    sigma**2 =  5.3039E-02
+ mode order = -23
+ Iteration converged after   4 steps.    sigma**2 =  5.7748E-02
+ mode order = -22
+ Iteration converged after   4 steps.    sigma**2 =  6.2971E-02
+ mode order = -21
+ Iteration converged after   4 steps.    sigma**2 =  6.8744E-02
+ mode order = -20
+ Iteration converged after   4 steps.    sigma**2 =  7.5230E-02
+ mode order = -19
+ Iteration converged after   4 steps.    sigma**2 =  8.2775E-02
+ mode order = -18
+ Iteration converged after   4 steps.    sigma**2 =  9.1805E-02
+ mode order = -17
+ Iteration converged after   4 steps.    sigma**2 =  1.0274E-01
+ mode order = -16
+ Iteration converged after   5 steps.    sigma**2 =  1.1606E-01
+ mode order = -15
+ Iteration converged after   4 steps.    sigma**2 =  1.3238E-01
+ mode order = -14
+ Iteration converged after   4 steps.    sigma**2 =  1.5259E-01
+ mode order = -13
+ Iteration converged after   4 steps.    sigma**2 =  1.7797E-01
+ mode order = -12
+ Iteration converged after   4 steps.    sigma**2 =  2.1041E-01
+ mode order = -11
+ Iteration converged after   4 steps.    sigma**2 =  2.5285E-01
+ mode order = -10
+ Iteration converged after   4 steps.    sigma**2 =  3.1016E-01
+ mode order =  -9
+ Iteration converged after   4 steps.    sigma**2 =  3.9065E-01
+ mode order =  -8
+ Iteration converged after   4 steps.    sigma**2 =  5.0827E-01
+ mode order =  -7
+
+    1. Start iteration for l =     1.000 m =         1 trial sigma**2 =  2.9607E-03
+ Iteration converged after   4 steps.    sigma**2 =  2.9795E-03
+ mode order =-101
+ Iteration converged after   4 steps.    sigma**2 =  3.0395E-03
+ mode order =-100
+ Iteration converged after   4 steps.    sigma**2 =  3.1013E-03
+ mode order = -99
+ Iteration converged after   4 steps.    sigma**2 =  3.1650E-03
+ mode order = -98
+ Iteration converged after   4 steps.    sigma**2 =  3.2307E-03
+ mode order = -97
+ Iteration converged after   4 steps.    sigma**2 =  3.2983E-03
+ mode order = -96
+ Iteration converged after   4 steps.    sigma**2 =  3.3681E-03
+ mode order = -95
+ Iteration converged after   4 steps.    sigma**2 =  3.4400E-03
+ mode order = -94
+ Iteration converged after   4 steps.    sigma**2 =  3.5141E-03
+ mode order = -93
+ Iteration converged after   4 steps.    sigma**2 =  3.5907E-03
+ mode order = -92
+ Iteration converged after   4 steps.    sigma**2 =  3.6698E-03
+ mode order = -91
+ Iteration converged after   4 steps.    sigma**2 =  3.7516E-03
+ mode order = -90
+ Iteration converged after   4 steps.    sigma**2 =  3.8363E-03
+ mode order = -89
+ Iteration converged after   4 steps.    sigma**2 =  3.9239E-03
+ mode order = -88
+ Iteration converged after   4 steps.    sigma**2 =  4.0145E-03
+ mode order = -87
+ Iteration converged after   4 steps.    sigma**2 =  4.1082E-03
+ mode order = -86
+ Iteration converged after   4 steps.    sigma**2 =  4.2050E-03
+ mode order = -85
+ Iteration converged after   4 steps.    sigma**2 =  4.3050E-03
+ mode order = -84
+ Iteration converged after   4 steps.    sigma**2 =  4.4083E-03
+ mode order = -83
+ Iteration converged after   4 steps.    sigma**2 =  4.5149E-03
+ mode order = -82
+ Iteration converged after   4 steps.    sigma**2 =  4.6251E-03
+ mode order = -81
+ Iteration converged after   4 steps.    sigma**2 =  4.7391E-03
+ mode order = -80
+ Iteration converged after   4 steps.    sigma**2 =  4.8574E-03
+ mode order = -79
+ Iteration converged after   4 steps.    sigma**2 =  4.9802E-03
+ mode order = -78
+ Iteration converged after   4 steps.    sigma**2 =  5.1080E-03
+ mode order = -77
+ Iteration converged after   4 steps.    sigma**2 =  5.2411E-03
+ mode order = -76
+ Iteration converged after   4 steps.    sigma**2 =  5.3798E-03
+ mode order = -75
+ Iteration converged after   4 steps.    sigma**2 =  5.5242E-03
+ mode order = -74
+ Iteration converged after   4 steps.    sigma**2 =  5.6747E-03
+ mode order = -73
+ Iteration converged after   4 steps.    sigma**2 =  5.8312E-03
+ mode order = -72
+ Iteration converged after   4 steps.    sigma**2 =  5.9941E-03
+ mode order = -71
+ Iteration converged after   4 steps.    sigma**2 =  6.1636E-03
+ mode order = -70
+ Iteration converged after   4 steps.    sigma**2 =  6.3401E-03
+ mode order = -69
+ Iteration converged after   4 steps.    sigma**2 =  6.5239E-03
+ mode order = -68
+ Iteration converged after   4 steps.    sigma**2 =  6.7157E-03
+ mode order = -67
+ Iteration converged after   4 steps.    sigma**2 =  6.9164E-03
+ mode order = -66
+ Iteration converged after   4 steps.    sigma**2 =  7.1268E-03
+ mode order = -65
+ Iteration converged after   4 steps.    sigma**2 =  7.3479E-03
+ mode order = -64
+ Iteration converged after   4 steps.    sigma**2 =  7.5804E-03
+ mode order = -63
+ Iteration converged after   4 steps.    sigma**2 =  7.8251E-03
+ mode order = -62
+ Iteration converged after   4 steps.    sigma**2 =  8.0827E-03
+ mode order = -61
+ Iteration converged after   4 steps.    sigma**2 =  8.3536E-03
+ mode order = -60
+ Iteration converged after   4 steps.    sigma**2 =  8.6382E-03
+ mode order = -59
+ Iteration converged after   4 steps.    sigma**2 =  8.9366E-03
+ mode order = -58
+ Iteration converged after   4 steps.    sigma**2 =  9.2489E-03
+ mode order = -57
+ Iteration converged after   4 steps.    sigma**2 =  9.5751E-03
+ mode order = -56
+ Iteration converged after   4 steps.    sigma**2 =  9.9157E-03
+ mode order = -55
+ Iteration converged after   4 steps.    sigma**2 =  1.0272E-02
+ mode order = -54
+ Iteration converged after   4 steps.    sigma**2 =  1.0647E-02
+ mode order = -53
+ Iteration converged after   4 steps.    sigma**2 =  1.1045E-02
+ mode order = -52
+ Iteration converged after   4 steps.    sigma**2 =  1.1469E-02
+ mode order = -51
+ Iteration converged after   4 steps.    sigma**2 =  1.1922E-02
+ mode order = -50
+ Iteration converged after   4 steps.    sigma**2 =  1.2405E-02
+ mode order = -49
+ Iteration converged after   4 steps.    sigma**2 =  1.2918E-02
+ mode order = -48
+ Iteration converged after   4 steps.    sigma**2 =  1.3462E-02
+ mode order = -47
+ Iteration converged after   4 steps.    sigma**2 =  1.4036E-02
+ mode order = -46
+ Iteration converged after   4 steps.    sigma**2 =  1.4640E-02
+ mode order = -45
+ Iteration converged after   4 steps.    sigma**2 =  1.5275E-02
+ mode order = -44
+ Iteration converged after   4 steps.    sigma**2 =  1.5949E-02
+ mode order = -43
+ Iteration converged after   4 steps.    sigma**2 =  1.6673E-02
+ mode order = -42
+ Iteration converged after   4 steps.    sigma**2 =  1.7459E-02
+ mode order = -41
+ Iteration converged after   4 steps.    sigma**2 =  1.8316E-02
+ mode order = -40
+ Iteration converged after   4 steps.    sigma**2 =  1.9247E-02
+ mode order = -39
+ Iteration converged after   4 steps.    sigma**2 =  2.0257E-02
+ mode order = -38
+ Iteration converged after   4 steps.    sigma**2 =  2.1349E-02
+ mode order = -37
+ Iteration converged after   4 steps.    sigma**2 =  2.2525E-02
+ mode order = -36
+ Iteration converged after   4 steps.    sigma**2 =  2.3784E-02
+ mode order = -35
+ Iteration converged after   4 steps.    sigma**2 =  2.5122E-02
+ mode order = -34
+ Iteration converged after   4 steps.    sigma**2 =  2.6539E-02
+ mode order = -33
+ Iteration converged after   4 steps.    sigma**2 =  2.8054E-02
+ mode order = -32
+ Iteration converged after   4 steps.    sigma**2 =  2.9717E-02
+ mode order = -31
+ Iteration converged after   4 steps.    sigma**2 =  3.1581E-02
+ mode order = -30
+ Iteration converged after   4 steps.    sigma**2 =  3.3682E-02
+ mode order = -29
+ Iteration converged after   4 steps.    sigma**2 =  3.6050E-02
+ mode order = -28
+ Iteration converged after   4 steps.    sigma**2 =  3.8712E-02
+ mode order = -27
+ Iteration converged after   4 steps.    sigma**2 =  4.1702E-02
+ mode order = -26
+ Iteration converged after   4 steps.    sigma**2 =  4.5057E-02
+ mode order = -25
+ Iteration converged after   4 steps.    sigma**2 =  4.8820E-02
+ mode order = -24
+ Iteration converged after   4 steps.    sigma**2 =  5.3039E-02
+ mode order = -23
+ Iteration converged after   4 steps.    sigma**2 =  5.7748E-02
+ mode order = -22
+ Iteration converged after   4 steps.    sigma**2 =  6.2971E-02
+ mode order = -21
+ Iteration converged after   4 steps.    sigma**2 =  6.8744E-02
+ mode order = -20
+ Iteration converged after   4 steps.    sigma**2 =  7.5230E-02
+ mode order = -19
+ Iteration converged after   4 steps.    sigma**2 =  8.2775E-02
+ mode order = -18
+ Iteration converged after   4 steps.    sigma**2 =  9.1805E-02
+ mode order = -17
+ Iteration converged after   4 steps.    sigma**2 =  1.0274E-01
+ mode order = -16
+ Iteration converged after   5 steps.    sigma**2 =  1.1606E-01
+ mode order = -15
+ Iteration converged after   4 steps.    sigma**2 =  1.3238E-01
+ mode order = -14
+ Iteration converged after   4 steps.    sigma**2 =  1.5259E-01
+ mode order = -13
+ Iteration converged after   4 steps.    sigma**2 =  1.7797E-01
+ mode order = -12
+ Iteration converged after   4 steps.    sigma**2 =  2.1041E-01
+ mode order = -11
+ Iteration converged after   4 steps.    sigma**2 =  2.5285E-01
+ mode order = -10
+ Iteration converged after   4 steps.    sigma**2 =  3.1016E-01
+ mode order =  -9
+ Iteration converged after   4 steps.    sigma**2 =  3.9065E-01
+ mode order =  -8
+ Iteration converged after   4 steps.    sigma**2 =  5.0827E-01
+ mode order =  -7
+
+
+ Exiting adipls
+ --------------------------------------------------
