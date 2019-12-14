@@ -9,7 +9,7 @@ frequencies with TAR and 2nd-order perturbative method.
 
 work_bench_gyre is an example work dir for TAR computation with GYRE.
 work_bench_adipls is an example work dir for 2nd-Pert computation with ADIPLS.
-These two particular work directories were used for generating benchmarks in our project, but they 
+These two work directories were used for generating benchmarks in our project, but they 
 are also suitable for grid scanning. 
 
 work_gGbA_fine_2 is an example work dir used for GYRE fine grid scanning.
