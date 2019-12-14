@@ -35,8 +35,8 @@ Compile the work directory to begin.
 
 ---- For GYRE directories ----
 
-edit inlist_astero for model controls
-use input file gyre.in for pulsation controls, then run the command ./rn, 
+Edit inlist_astero for model controls.
+Use input file gyre.in for pulsation controls, then run the command ./rn, 
 and then $GYRE_DIR/bin/gyre ./gyre.in 
 
 Alternatively, use the grid scanning tool run_gyre 
@@ -44,8 +44,8 @@ by running the command ./run_gyre
 
 ---- For ADIPLS directories ----
 
-edit inlist_astero for model controls
-use input file inlist_pulse_controls for pulsation controls,
+Edit inlist_astero for model controls
+Use input file inlist_pulse_controls for pulsation controls,
 then run the command ./rn
 
 Alternatively, use the grid scanning tool run_adipls 
