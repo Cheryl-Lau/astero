@@ -23,8 +23,8 @@ The src codes are coupled to the edited version of ADIPLS provided in the 'adipl
 
 # Instructions
 
-Replace the astero/src with the src in here.
-Add the work directories in here to the astero directory.
+Replace your local astero/src with the src in here.
+Then add the work directories work_bench_gyre and work_bench_adipls to your astero directory.
 
 Replace the mesa-r10398/adipls/adipack.c/adipls with adipls in the 'adipls' repository. 
 Recompile the entire MESA to generate the object files.
@@ -36,20 +36,20 @@ Compile the work directory to begin.
 ---- For GYRE directories ----
 
 edit inlist_astero for model controls
-use input file gyre.in for pulsation controls
-run the command ./rn, then $GYRE_DIR/bin/gyre ./gyre.in 
+use input file gyre.in for pulsation controls, then run the command ./rn, 
+and then $GYRE_DIR/bin/gyre ./gyre.in 
 
 Alternatively, use the grid scanning tool run_gyre 
-run the command ./run_gyre 
+by running the command ./run_gyre 
 
 ---- For ADIPLS directories ----
 
 edit inlist_astero for model controls
-use input file inlist_pulse_controls for pulsation controls
-run the command ./rn
+use input file inlist_pulse_controls for pulsation controls,
+then run the command ./rn
 
 Alternatively, use the grid scanning tool run_adipls 
-run the command ./run_adipls 
+by running the command ./run_adipls 
 
 
 
