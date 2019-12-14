@@ -2,7 +2,7 @@
 
 MScR Project - Stellar rotation formalisms of γ Doradus stars from gravity-mode period spacings
 
-###################################################################################
+(Updated 14/12/2019)
 
 This repository contains the files in MESA astero module that are edited and/or created to compute 
 frequencies with TAR and 2nd-order perturbative method. 
@@ -20,9 +20,8 @@ src contains the edited src codes in astero module
 The src codes are coupled to the edited version of ADIPLS provided in the 'adipls' repository. 
 
 
-###################################################################################
 
-Instructions for users:
+# Instructions
 
 Replace the astero/src with the src in here.
 Add the work directories in here to the astero directory.
@@ -34,7 +33,8 @@ Copy work_bench_gyre/work_bench_adipls to create a new working directory for you
 cd to this work directory to compute pulsation freqs with TAR/2nd-Pert formalism.  
 Compile the work directory to begin. 
 
-## For GYRE directories:
+---- For GYRE directories ----
+
 edit inlist_astero for model controls
 use input file gyre.in for pulsation controls
 run the command ./rn, then $GYRE_DIR/bin/gyre ./gyre.in 
@@ -42,17 +42,14 @@ run the command ./rn, then $GYRE_DIR/bin/gyre ./gyre.in
 Alternatively, use the grid scanning tool run_gyre 
 run the command ./run_gyre 
 
-## For ADIPLS directories:
+---- For ADIPLS directories ----
+
 edit inlist_astero for model controls
 use input file inlist_pulse_controls for pulsation controls
 run the command ./rn
 
 Alternatively, use the grid scanning tool run_adipls 
 run the command ./run_adipls 
-
-####################################################################################
-
-
 
 
 
