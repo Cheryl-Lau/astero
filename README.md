@@ -15,7 +15,7 @@ are also suitable for grid scanning.
 work_gGbA_fine_2 is an example work dir used for GYRE fine grid scanning in our project.
 
 src contains the edited src codes in astero module
-[Note that the src files in the work directories are also edited]
+[Note that these are NOT the src files inside the work directories]
 
 The src codes are coupled to the edited version of ADIPLS provided in the 'adipls' repository. 
 
@@ -23,15 +23,15 @@ The src codes are coupled to the edited version of ADIPLS provided in the 'adipl
 ###################################################################################
 Instructions for users:
 
-Replace the astero/src with the src in here
-Add the work directories in here to the astero directory
+Replace the astero/src with the src in here.
+Add the work directories in here to the astero directory.
 
-Replace the mesa-r10398/adipls/adipack.c/adipls with adipls in the 'adipls' repository 
-Recompile the entire MESA to generate the object files
+Replace the mesa-r10398/adipls/adipack.c/adipls with adipls in the 'adipls' repository, 
+Recompile the entire MESA to generate the object files.
 
-Copy work_bench_gyre/work_bench_adipls to create a new working directory. Change into the this 
+Copy work_bench_gyre/work_bench_adipls to create a new working directory. cd to the this 
 work directory to compute pulsation freqs with TAR/2nd-Pert formalism.  
-Compile the work directory 
+Compile the work directory to begin. 
 
 For GYRE directories:
 edit inlist_astero for model controls
