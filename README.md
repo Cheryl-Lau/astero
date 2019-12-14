@@ -35,16 +35,19 @@ Compile the work directory to begin.
 
 ---- For GYRE directories ----
 
-Edit inlist_astero for model controls.
-Use input file gyre.in for pulsation controls, then run the command ./rn, 
-and then $GYRE_DIR/bin/gyre ./gyre.in 
+Edit inlist_astero for model controls, then run the command ./rn
+
+Take the model in LOGS dir you want to use for computing freqs, and enter it
+into GYRE inputs. 
+Use input file gyre.in for pulsation controls, 
+and then run the command $GYRE_DIR/bin/gyre ./gyre.in 
 
 Alternatively, use the grid scanning tool run_gyre 
 by running the command ./run_gyre 
 
 ---- For ADIPLS directories ----
 
-Edit inlist_astero for model controls
+Edit inlist_astero for model controls.
 Use input file inlist_pulse_controls for pulsation controls,
 then run the command ./rn
 
