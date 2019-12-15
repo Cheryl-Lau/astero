@@ -4,7 +4,7 @@ MScR Project - Stellar rotation formalisms of γ Doradus stars from gravity-mode
 
 (Updated 14/12/2019)
 
-This repository contains the files in MESA astero module that are edited and/or created to compute 
+This repository contains the files in MESA astero module that are edited/created to compute 
 frequencies with TAR and 2nd-order perturbative method. 
 
 work_bench_gyre is an example work dir for TAR computation with GYRE.
@@ -12,13 +12,28 @@ work_bench_adipls is an example work dir for 2nd-Pert computation with ADIPLS.
 These two work directories were used for generating benchmarks in our project, but they 
 are also suitable for grid scanning. 
 
-work_gGbA_fine_2 is an example work dir used for GYRE fine grid scanning.
+work_gGbA_fine_2 and work_gAbF_fine_2 are example work dir used for fine grid scanning.
 
 src contains the edited src codes in astero module
-[Note that these are NOT the src files inside the work directories]
+[Note: these are NOT the src files inside the work directories]
 
-The src codes are coupled to the edited version of ADIPLS provided in the 'adipls' repository. 
+The src codes are only coupled to the edited version of ADIPLS provided in the 'adipls' repository. 
+The adipls in the orginal MESA package does not comply with the src in here. 
 
+
+# New features introduced to MESA
+
+The input file inlist_pulse_controls in astero work directories (e.g. work_bench_adipls) allows
+users to add rotational effects to the output freqs when calling ADIPLS from MESA. 
+
+The following parameter inputs are required:
+- Degree l
+- Starting Azimuthal order m (the code then goes m,m+1,m+2,...,l)
+- Frequency range (uHz)
+- Number of steps in freq scan 
+- Uniform angular rotation rate (choose rad/s or critical)
+- Order of perturbative method (choose 1st- or 2nd-)
+- Output filename 
 
 
 # Instructions
