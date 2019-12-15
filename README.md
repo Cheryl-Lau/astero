@@ -35,6 +35,24 @@ The following parameter inputs are required:
 - Order of perturbative method (choose 1st- or 2nd-)
 - Output filename 
 
+The final set of pulsation frequencies are stored in the last (10th) column of the output file. The outputs 
+for each models includes the mode data for all values of m defined in the input. 
+Only extract those for a specific value of m for one mode. 
+
+The outputs are (in order of column number):
+- Degree l
+- Order n 
+- Azimuthal degree m
+- Zero-th order frequencies 
+- Inertia 
+- Beta 
+- Splitting term 1 
+- Splitting term 2
+- Splitting term 3 
+- Final set of freqs after combining all splitting terms 
+
+For details on the calculations of splittings, see Burke et al. (2006), Kjeldsen et al. (1998). 
+
 
 # Instructions
 
