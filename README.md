@@ -52,6 +52,7 @@ The outputs are (in order of column number):
 - Final set of freqs after combining all splitting terms 
 
 For details on the calculations of splittings, see Burke et al. (2006), Kjeldsen et al. (1998). 
+[NOTE: the splitting terms 1/2/3 above are NOT the same as the 1st/2nd/3rd-order pert expansion terms]
 
 
 # Instructions
