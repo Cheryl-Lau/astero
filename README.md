@@ -18,7 +18,7 @@ src contains the edited src codes in astero module
 [Note: these are NOT the src files inside the work directories]
 
 The src codes are only coupled to the edited version of ADIPLS provided in the 'adipls' repository. 
-The adipls in the orginal MESA package does not comply with the src in here. 
+The adipls in the orginal MESA package does not comply with the src in this repo. 
 
 
 # New features introduced to MESA
