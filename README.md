@@ -61,7 +61,7 @@ Replace your local astero/src with the src in here.
 Then add the work directories work_bench_gyre and work_bench_adipls to your astero directory.
 
 Replace the mesa-r10398/adipls/adipack.c/adipls with adipls in the 'adipls' repository. 
-Recompile the entire MESA to generate the object files.
+Clean and Recompile the entire MESA to generate the object files.
 
 Copy work_bench_gyre/work_bench_adipls to create a new working directory for your project. 
 cd to this work directory to compute pulsation freqs with TAR/2nd-Pert formalism.  
@@ -76,8 +76,9 @@ into GYRE inputs.
 Use input file gyre.in for pulsation controls, 
 and then run the command $GYRE_DIR/bin/gyre ./gyre.in 
 
-Alternatively, use the grid scanning tool run_gyre 
-by running the command ./run_gyre 
+Alternatively, use the grid scanning tool run_gyre,
+edit the grid parameter settings in the shell script,
+then run the command ./run_gyre 
 
 ---- For ADIPLS directories ----
 
